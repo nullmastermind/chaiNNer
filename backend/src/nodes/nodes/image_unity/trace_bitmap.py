@@ -78,7 +78,7 @@ class ScaleXNode(NodeBase):
                 "Speckles",
                 precision=0,
                 controls_step=1,
-                default=3,
+                default=1,
                 maximum=256,
                 minimum=0,
             ),

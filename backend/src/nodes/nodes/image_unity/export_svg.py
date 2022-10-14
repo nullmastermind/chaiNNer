@@ -25,19 +25,12 @@ class ScaleXNode(NodeBase):
         self.inputs = [
             TextInput("SVG Path"),
             NumberInput(
-                "Scale Multiple",
+                "Scale Factor",
                 precision=1,
                 controls_step=0.1,
                 default=1.5,
                 minimum=0,
-            ),
-            NumberInput(
-                "Remove SVG File",
-                precision=0,
-                controls_step=1,
-                default=1,
-                maximum=1,
-                minimum=0,
+                unit="x",
             ),
         ]
         self.outputs = [ImageOutput()]
@@ -45,13 +38,13 @@ class ScaleXNode(NodeBase):
         self.name = "Export SVG"
         self.icon = "MdSportsEsports"
 
-    def run(self, svg_path: str, scale_multiple: float, is_remove: int) -> np.ndarray:
+    def run(self, svg_path: str, scale_multiple: float) -> np.ndarray:
         with open(svg_path, "r") as f:
             content = f.read()
             width = int(content.split('width="')[1].split('"')[0])
             height = int(content.split('height="')[1].split('"')[0])
             save_to = get_temp_file("png")
-            scale = 8 * scale_multiple
+            scale = int(8 * scale_multiple)
             subprocess.call(
                 [
                     get_bin("resvg.exe"),
@@ -81,7 +74,5 @@ class ScaleXNode(NodeBase):
             img, _, _ = read_node.run(save_to)
 
             safe_remove_file(save_to)
-            if is_remove == 1:
-                safe_remove_file(svg_path)
 
         return img
