@@ -4,6 +4,7 @@ from .image_filter import category as ImageFilterCategory
 from .image_dimension import category as ImageDimensionCategory
 from .image_channel import category as ImageChannelCategory
 from .image_utility import category as ImageUtilityCategory
+from .image_unity import category as ImageUnityCategory
 from .utility import category as UtilityCategory
 from .pytorch import category as PyTorchCategory
 from .ncnn import category as NCNNCategory
@@ -17,6 +18,7 @@ builtin_categories = [
     ImageFilterCategory,
     ImageUtilityCategory,
     ImageChannelCategory,
+    ImageUnityCategory,
     UtilityCategory,
     PyTorchCategory,
     NCNNCategory,

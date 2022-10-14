@@ -21,3 +21,4 @@ sanic
 sanic_cors
 # torch
 # torchvision
+python-dotenv
