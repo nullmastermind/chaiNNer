@@ -13,12 +13,12 @@ from .onnx import category as ONNXCategory
 
 builtin_categories = [
     ImageCategory,
+    ImageUnityCategory,
     ImageDimensionCategory,
     ImageAdjustmentCategory,
     ImageFilterCategory,
     ImageUtilityCategory,
     ImageChannelCategory,
-    ImageUnityCategory,
     UtilityCategory,
     PyTorchCategory,
     NCNNCategory,

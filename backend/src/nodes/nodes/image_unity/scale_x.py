@@ -5,13 +5,14 @@ import subprocess
 import numpy as np
 
 from . import category as ImageUnityCategory
-from .utility import np_image_to_path, get_bin, safe_remove_file
+from .utility import np_image_to_path, get_bin
 from ..image.load_image import ImReadNode
 from ...node_base import NodeBase
 from ...node_factory import NodeFactory
 from ...properties import expression
 from ...properties.inputs import ImageInput, NumberInput
 from ...properties.outputs import ImageOutput
+from ...utils.utils import safe_remove_file
 
 
 @NodeFactory.register("chainner:image:scalex")

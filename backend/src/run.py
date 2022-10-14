@@ -17,6 +17,7 @@ from sanic.request import Request
 from sanic.response import json
 from sanic_cors import CORS
 
+from nodes.utils.utils import clean_temp
 from nodes.node_factory import NodeFactory
 from nodes.utils.exec_options import (
     set_execution_options,
@@ -245,6 +246,7 @@ async def run(request: Request):
         await ctx.queue.put(
             {"event": "finish", "data": {"message": "Successfully ran nodes!"}}
         )
+        clean_temp()
         return json(successResponse("Successfully ran nodes!"), status=200)
     except Exception as exception:
         logger.error(exception, exc_info=True)
@@ -263,6 +265,7 @@ async def run(request: Request):
             }
 
         await ctx.queue.put({"event": "execution-error", "data": error})
+        clean_temp()
         return json(errorResponse("Error running nodes!", exception), status=500)
 
 
