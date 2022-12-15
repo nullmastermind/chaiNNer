@@ -11,6 +11,7 @@ import importlib
 import os
 
 import cv2  # pylint: disable=unused-import
+from dotenv import load_dotenv
 from sanic import Sanic
 from sanic.log import logger, access_logger
 from sanic.request import Request
@@ -446,6 +447,8 @@ async def list_ncnn_gpus(_request: Request):
 
 
 if __name__ == "__main__":
+    load_dotenv()
+
     try:
         port = int(sys.argv[1]) or 8000
     except:
